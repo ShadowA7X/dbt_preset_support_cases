@@ -1,0 +1,18 @@
+version: 2
+
+metrics:
+  - name: total_revenue
+    type: simple
+    label: "Total Revenue"
+    description: "Sum of all payment amounts"
+    
+    type_params:
+      measure: payment_amount
+    
+  - name: payment_count
+    type: simple  
+    label: "Total Payments"
+    description: "Count of all payments"
+    
+    type_params:
+      measure: payment_count

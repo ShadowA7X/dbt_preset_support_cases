@@ -1,0 +1,32 @@
+version: 2
+
+semantic_models:
+  - name: payments
+    model: ref('stg_pagila__payment')
+    description: "Payment transactions semantic model"
+    
+    defaults:
+      agg_time_dimension: payment_date
+    
+    entities:
+      - name: payment_id
+        type: primary
+        expr: payment_id
+      - name: customer_id
+        type: foreign
+        expr: customer_id
+    
+    dimensions:
+      - name: payment_date
+        type: time
+        type_params:
+          time_granularity: day
+        expr: payment_date
+        
+    measures:
+      - name: payment_amount
+        agg: sum
+        expr: amount
+      - name: payment_count
+        agg: count
+        expr: payment_id
